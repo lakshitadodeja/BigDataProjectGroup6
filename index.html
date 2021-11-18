@@ -6,15 +6,13 @@
   </div>
 </head>
 
-<body style="font-family: Arial, Helvetica, sans-serif;">
+<body id="body" style="font-family: Arial, Helvetica, sans-serif;">
 <br>
 <div class="center" style="background: white; padding-bottom: 30px;">
 <label for="model">Choose a Model:<t></label>
 <select name="model" id="model">
   <option value="model1">Model 1</option>
   <option value="model2">Model 2</option>
-  <option value="model3">Model 3</option>
-  <option value="model4">Model 4</option>
 </select>
 
 <label style="padding-left: 20px;" for="patch"><t><t>Choose a Patch:<t></label>
@@ -23,28 +21,163 @@
   <option value="patch1">Patch 1</option>
   <option value="patch2">Patch 2</option>
   <option value="patch3">Patch 3</option>
-  <option value="patch4">Patch 4</option>
 </select>
 
 </div>
-
+<p id="demo"></p>
 <div style=" font-size: 20px; background: white; font-family: Arial, Helvetica, sans-serif; ">
   <label style=" position:absolute; left: 18%; font-family: Arial, Helvetica, sans-serif;">Input</label>
   <label style="position:absolute; left: 38%;  font-family: Arial, Helvetica, sans-serif;">Attack</label>
   <label style="position:absolute; left: 55%; font-family: Arial, Helvetica, sans-serif;">Ground Truth</label>
   <label style="position:absolute; left: 75%;  font-family: Arial, Helvetica, sans-serif;">Prediction</label>
-  
+
 </div>
-<img style=" position:relative; left: 10%; top:5%" src="puppy.jpg" alt="puppy" width="300" height="200">
-<img style=" position:relative; left: 10%; top:5%" src="puppy.jpg" alt="puppy" width="300" height="200">
-<img style=" position:relative; left: 10%; top:5%" src="puppy.jpg" alt="puppy" width="300" height="200">
-<img style=" position:relative; left: 10%; top:5%" src="puppy.jpg" alt="puppy" width="300" height="200">
-<br>
-<img style=" position:relative; left: 10%; top:5%" src="puppy.jpg" alt="puppy" width="300" height="200">
-<img style=" position:relative; left: 10%; top:5%" src="puppy.jpg" alt="puppy" width="300" height="200">
-<img style=" position:relative; left: 10%; top:5%" src="puppy.jpg" alt="puppy" width="300" height="200">
-<img style=" position:relative; left: 10%; top:5%" src="puppy.jpg" alt="puppy" width="300" height="200">
+
+
+
 </body>
+<script>
+//document.getElementById("puppy").src = "cat.jpg";
+var el_model = document.getElementById("model");
+var text_model = el_model.options[el_model.selectedIndex].innerHTML;
+var option_model=1;
+
+var el_patch = document.getElementById("patch");
+var text_patch = el_patch.options[el_patch.selectedIndex].innerHTML;
+var option_patch=1;
+
+var div = document.getElementById('divID');
+//if(text=="Model 1")
+//console.log(text);
+
+function show_image(img_num, src, width, height, alt) {
+    var img = document.createElement(img_num);
+    img.src = src;
+    img.width = width;
+    img.height = height;
+    img.alt = alt;
+    img.style.position="relative";
+    img.style.left="10%";
+    img.style.top="7%";
+
+    // This next line will just add it to the <body> tag
+    //div.innerHTML += img;
+    //document.body.appendChild(img);
+}
+
+document.getElementById('model').addEventListener('change', function() {
+  //console.log('You selected: ', this.value);
+  el_model = document.getElementById('model');
+  text_model = el_model.options[el_model.selectedIndex].innerHTML;
+  //option_model=text_model.slice(-1);
+  console.log(text_model.slice(-1));
+  //document.getElementById("img1").src = "BDSImages/BDSImages/nnconv5_2p/attacked_image_0.png";
+  
+  
+
+  
+  //document.getElementById("demo").innerHTML = text;
+
+});
+
+document.getElementById('patch').addEventListener('change', function() {
+  //console.log('You selected: ', this.value);
+  el_patch = document.getElementById('patch');
+  text_patch = el_patch.options[el_patch.selectedIndex].innerHTML;
+  //option_patch=text_patch.slice(-1);
+  console.log(text_patch.slice(-1));
+  //document.getElementById("demo").innerHTML = text;
+});
+
+document.getElementById('body').addEventListener('change', function() {
+  //console.log('You selected: ', this.value);
+  
+  console.log("hello");
+  arr=["0","20","40","60","80","100","120","140","160","180","200","220"];
+  //document.body.innerHTML = '';
+  //div.innerHTML = '';
+
+  if(text_model=="Model 1" && text_patch=="Patch 1"){
+  for (let i = 0, len = arr.length; i < len; i++) {
+    show_image("img","BDSImages/BDSImages/nnconv5_2p/input_image_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_2p/attacked_image_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_2p/GroundTruth_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_2p/Predicted_"+arr[i]+".png",300,200,"img");
+    document.body.append("<br>");
+  
+  }
+}
+
+
+if(text_model=="Model 1" && text_patch=="Patch 2"){
+  for (let i = 0, len = arr.length; i < len; i++) {
+    show_image("img","BDSImages/BDSImages/nnconv5_5p/input_image_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_5p/attacked_image_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_5p/GroundTruth_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_5p/Predicted_"+arr[i]+".png",300,200,"img");
+    document.body.append("<br>");
+  
+  }
+}
+
+
+if(text_model=="Model 1" && text_patch=="Patch 3"){
+  for (let i = 0, len = arr.length; i < len; i++) {
+    show_image("img","BDSImages/BDSImages/nnconv5_75p/input_image_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_75p/attacked_image_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_75p/GroundTruth_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_75p/Predicted_"+arr[i]+".png",300,200,"img");
+    document.body.append("<br>");
+  
+  }
+}
+
+if(text_model=="Model 2" && text_patch=="Patch 1"){
+  for (let i = 0, len = arr.length; i < len; i++) {
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/input_image_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/attacked_image_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/GroundTruth_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/Predicted_"+arr[i]+".png",300,200,"img");
+    document.body.append("<br>");
+  
+  }
+}
+
+
+if(text_model=="Model 2" && text_patch=="Patch 2"){
+  for (let i = 0, len = arr.length; i < len; i++) {
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/input_image_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/attacked_image_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/GroundTruth_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/Predicted_"+arr[i]+".png",300,200,"img");
+    document.body.append("<br>");
+  
+  }
+}
+
+
+if(text_model=="Model 2" && text_patch=="Patch 3"){
+  for (let i = 0, len = arr.length; i < len; i++) {
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/input_image_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/attacked_image_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/GroundTruth_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/Predicted_"+arr[i]+".png",300,200,"img");
+    document.body.append("<br>");
+  
+  }
+}
+
+
+
+//document.body.append(div);
+  //document.getElementById("demo").innerHTML = text;
+});
+
+
+
+
+
+</script>
 </html>
 
 
