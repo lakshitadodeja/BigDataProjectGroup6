@@ -2,7 +2,7 @@
 <head style="background: black;">
 <div class="topnav">
   <h1 style=" color:white; font-family:arial; text-align: center;"> Adversarial Attacks and Defences on Monocular Depth Estimation</h1>
-  <h2 style="  color:black; font-family:arial; text-align: center;"> Group 6 </h2>  
+  <h2 style="  color:black; font-family:arial; text-align: center;"> Group 6 </h2>
   </div>
 </head>
 
@@ -11,16 +11,16 @@
 <div class="center" style="background: white; padding-bottom: 30px;">
 <label for="model">Choose a Model:<t></label>
 <select name="model" id="model">
-  <option value="model1">Model 1</option>
-  <option value="model2">Model 2</option>
+  <option value="model1">NN-CONNV5</option>
+  <option value="model2">NN-CONNV5-PRUNED</option>
 </select>
 
 <label style="padding-left: 20px;" for="patch"><t><t>Choose a Patch:<t></label>
-  
+
 <select name="patch" id="patch">
-  <option value="patch1">Patch 1</option>
-  <option value="patch2">Patch 2</option>
-  <option value="patch3">Patch 3</option>
+  <option value="patch1">Patch 2p</option>
+  <option value="patch2">Patch 5p</option>
+  <option value="patch3">Patch 075p</option>
 </select>
 
 </div>
@@ -47,6 +47,7 @@ var text_patch = el_patch.options[el_patch.selectedIndex].innerHTML;
 var option_patch=1;
 
 var div = document.getElementById('divID');
+var i = 0;
 //if(text=="Model 1")
 //console.log(text);
 
@@ -59,10 +60,25 @@ function show_image(img_num, src, width, height, alt) {
     img.style.position="relative";
     img.style.left="10%";
     img.style.top="7%";
+    img.id = i
+    i = i + 1
 
     // This next line will just add it to the <body> tag
     //div.innerHTML += img;
     document.body.appendChild(img);
+}
+
+function removeImages() {
+  i--
+  while(i>=0) {
+    console.log("remove image", i)
+    var el = document.getElementById(i);
+    console.log("Got element",el )
+    el.remove()
+    i--;
+  }
+  i++;
+  console.log("remove image", i)
 }
 
 document.getElementById('model').addEventListener('change', function() {
@@ -72,10 +88,10 @@ document.getElementById('model').addEventListener('change', function() {
   //option_model=text_model.slice(-1);
   console.log(text_model.slice(-1));
   //document.getElementById("img1").src = "BDSImages/BDSImages/nnconv5_2p/attacked_image_0.png";
-  
-  
 
-  
+
+
+
   //document.getElementById("demo").innerHTML = text;
 
 });
@@ -91,79 +107,96 @@ document.getElementById('patch').addEventListener('change', function() {
 
 document.getElementById('body').addEventListener('change', function() {
   //console.log('You selected: ', this.value);
-  
+
   console.log("hello");
   arr=["0","20","40","60","80","100","120","140","160","180","200","220"];
   //document.body.innerHTML = '';
   //div.innerHTML = '';
 
-  if(text_model=="Model 1" && text_patch=="Patch 1"){
+  if(text_model=="NN-CONNV5" && text_patch=="Patch 2p"){
+  if(i>1) {
+    removeImages()
+  }
   for (let i = 0, len = arr.length; i < len; i++) {
     show_image("img","BDSImages/BDSImages/nnconv5_2p/input_image_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_2p/attacked_image_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_2p/GroundTruth_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_2p/Predicted_"+arr[i]+".png",300,200,"img");
-    document.body.append("<br>");
-  
+
+
   }
 }
 
 
-if(text_model=="Model 1" && text_patch=="Patch 2"){
+if(text_model=="NN-CONNV5" && text_patch=="Patch 5p"){
+  if(i>1) {
+    removeImages()
+  }
   for (let i = 0, len = arr.length; i < len; i++) {
     show_image("img","BDSImages/BDSImages/nnconv5_5p/input_image_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_5p/attacked_image_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_5p/GroundTruth_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_5p/Predicted_"+arr[i]+".png",300,200,"img");
-    document.body.append("<br>");
-  
+
+
   }
 }
 
 
-if(text_model=="Model 1" && text_patch=="Patch 3"){
+if(text_model=="NN-CONNV5" && text_patch=="Patch 075p"){
+  if(i>1) {
+    removeImages()
+  }
   for (let i = 0, len = arr.length; i < len; i++) {
     show_image("img","BDSImages/BDSImages/nnconv5_75p/input_image_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_75p/attacked_image_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_75p/GroundTruth_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_75p/Predicted_"+arr[i]+".png",300,200,"img");
-    document.body.append("<br>");
-  
+
   }
 }
 
-if(text_model=="Model 2" && text_patch=="Patch 1"){
+if(text_model=="NN-CONNV5-PRUNED" && text_patch=="Patch 2p"){
+  if(i>1) {
+    removeImages()
+  }
   for (let i = 0, len = arr.length; i < len; i++) {
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/input_image_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/attacked_image_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/GroundTruth_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/Predicted_"+arr[i]+".png",300,200,"img");
-    document.body.append("<br>");
-  
+
+
   }
 }
 
 
-if(text_model=="Model 2" && text_patch=="Patch 2"){
+if(text_model=="NN-CONNV5-PRUNED" && text_patch=="Patch 5p"){
+  if(i>1) {
+    removeImages()
+  }
   for (let i = 0, len = arr.length; i < len; i++) {
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/input_image_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/attacked_image_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/GroundTruth_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/Predicted_"+arr[i]+".png",300,200,"img");
-    document.body.append("<br>");
-  
+
+
   }
 }
 
 
-if(text_model=="Model 2" && text_patch=="Patch 3"){
+if(text_model=="NN-CONNV5-PRUNED" && text_patch=="Patch 075p"){
+  if(i>1) {
+    removeImages()
+  }
   for (let i = 0, len = arr.length; i < len; i++) {
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/input_image_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/attacked_image_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/GroundTruth_"+arr[i]+".png",300,200,"img");
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/Predicted_"+arr[i]+".png",300,200,"img");
-    document.body.append("<br>");
-  
+
+
   }
 }
 
@@ -179,13 +212,3 @@ if(text_model=="Model 2" && text_patch=="Patch 3"){
 
 </script>
 </html>
-
-
-
-
-
-
-
-
-
-
