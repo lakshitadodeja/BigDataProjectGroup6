@@ -25,12 +25,22 @@
 
 </div>
 <p id="demo"></p>
-<div style=" font-size: 20px; background: white; font-family: Arial, Helvetica, sans-serif; ">
-  <label style=" position:absolute; left: 18%; font-family: Arial, Helvetica, sans-serif;">Input</label>
-  <label style="position:absolute; left: 38%;  font-family: Arial, Helvetica, sans-serif;">Attack</label>
-  <label style="position:absolute; left: 55%; font-family: Arial, Helvetica, sans-serif;">Ground Truth</label>
-  <label style="position:absolute; left: 75%;  font-family: Arial, Helvetica, sans-serif;">Prediction</label>
-
+<div class="row" style=" font-size: 20px; background: white; font-family: Arial, Helvetica, sans-serif; ">
+  <div class="column"  id=1001>
+    <header style="font-family: Arial, Helvetica, sans-serif;text-align: center;"">Input</header>
+  </div>
+  <div class="column"  id=1002>
+    <header style="font-family: Arial, Helvetica, sans-serif;text-align: center;"">Attack</header>
+  </div>
+  <div class="column"  id=1003>
+    <header style="font-family: Arial, Helvetica, sans-serif;text-align: center;"">Ground Truth</header>
+  </div>
+  <div class="column"  id=1004>
+    <header style="font-family: Arial, Helvetica, sans-serif;text-align: center;"">Prediction</header>
+  </div>
+  <div class="column"  id=1005>
+    <header style="font-family: Arial, Helvetica, sans-serif;text-align: center;"">Defended</header>
+  </div>
 </div>
 
 
@@ -51,7 +61,7 @@ var i = 0;
 //if(text=="Model 1")
 //console.log(text);
 
-function show_image(img_num, src, width, height, alt) {
+function show_image(img_num, src, width, height, alt, p_element) {
     var img = document.createElement(img_num);
     img.src = src;
     img.width = width;
@@ -65,7 +75,8 @@ function show_image(img_num, src, width, height, alt) {
 
     // This next line will just add it to the <body> tag
     //div.innerHTML += img;
-    document.body.appendChild(img);
+    //document.body.appendChild(img);
+    document.getElementById(p_element).appendChild(img);
 }
 
 function removeImages() {
@@ -118,10 +129,11 @@ document.getElementById('body').addEventListener('change', function() {
     removeImages()
   }
   for (let i = 0, len = arr.length; i < len; i++) {
-    show_image("img","BDSImages/BDSImages/nnconv5_2p/input_image_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_2p/attacked_image_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_2p/GroundTruth_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_2p/Predicted_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_2p/input_image_"+arr[i]+".png",300,200,"img",1001);
+    show_image("img","BDSImages/BDSImages/nnconv5_2p/attacked_image_"+arr[i]+".png",300,200,"img",1002);
+    show_image("img","BDSImages/BDSImages/nnconv5_2p/GroundTruth_"+arr[i]+".png",300,200,"img",1003);
+    show_image("img","BDSImages/BDSImages/nnconv5_2p/Predicted_"+arr[i]+".png",300,200,"img",1004);
+    show_image("img","BDSImages/BDSImages/nnconv5_2p/defended_"+arr[i]+".png",300,200,"img",1005);
 
 
   }
@@ -133,10 +145,11 @@ if(text_model=="NN-CONNV5" && text_patch=="Patch 5p"){
     removeImages()
   }
   for (let i = 0, len = arr.length; i < len; i++) {
-    show_image("img","BDSImages/BDSImages/nnconv5_5p/input_image_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_5p/attacked_image_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_5p/GroundTruth_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_5p/Predicted_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_5p/input_image_"+arr[i]+".png",300,200,"img",1001);
+    show_image("img","BDSImages/BDSImages/nnconv5_5p/attacked_image_"+arr[i]+".png",300,200,"img",1002);
+    show_image("img","BDSImages/BDSImages/nnconv5_5p/GroundTruth_"+arr[i]+".png",300,200,"img",1003);
+    show_image("img","BDSImages/BDSImages/nnconv5_5p/Predicted_"+arr[i]+".png",300,200,"img",1004);
+    show_image("img","BDSImages/BDSImages/nnconv5_5p/defended_"+arr[i]+".png",300,200,"img",1005);
 
 
   }
@@ -148,10 +161,11 @@ if(text_model=="NN-CONNV5" && text_patch=="Patch 075p"){
     removeImages()
   }
   for (let i = 0, len = arr.length; i < len; i++) {
-    show_image("img","BDSImages/BDSImages/nnconv5_75p/input_image_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_75p/attacked_image_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_75p/GroundTruth_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_75p/Predicted_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_75p/input_image_"+arr[i]+".png",300,200,"img",1001);
+    show_image("img","BDSImages/BDSImages/nnconv5_75p/attacked_image_"+arr[i]+".png",300,200,"img",1002);
+    show_image("img","BDSImages/BDSImages/nnconv5_75p/GroundTruth_"+arr[i]+".png",300,200,"img",1003);
+    show_image("img","BDSImages/BDSImages/nnconv5_75p/Predicted_"+arr[i]+".png",300,200,"img",1004);
+    show_image("img","BDSImages/BDSImages/nnconv5_75p/defended_"+arr[i]+".png",300,200,"img",1005);
 
   }
 }
@@ -161,10 +175,11 @@ if(text_model=="NN-CONNV5-PRUNED" && text_patch=="Patch 2p"){
     removeImages()
   }
   for (let i = 0, len = arr.length; i < len; i++) {
-    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/input_image_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/attacked_image_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/GroundTruth_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/Predicted_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/input_image_"+arr[i]+".png",300,200,"img",1001);
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/attacked_image_"+arr[i]+".png",300,200,"img",1002);
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/GroundTruth_"+arr[i]+".png",300,200,"img",1003);
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/Predicted_"+arr[i]+".png",300,200,"img",1004);
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_2p/defended_"+arr[i]+".png",300,200,"img",1005);
 
 
   }
@@ -176,10 +191,11 @@ if(text_model=="NN-CONNV5-PRUNED" && text_patch=="Patch 5p"){
     removeImages()
   }
   for (let i = 0, len = arr.length; i < len; i++) {
-    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/input_image_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/attacked_image_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/GroundTruth_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/Predicted_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/input_image_"+arr[i]+".png",300,200,"img",1001);
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/attacked_image_"+arr[i]+".png",300,200,"img",1002);
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/GroundTruth_"+arr[i]+".png",300,200,"img",1003);
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/Predicted_"+arr[i]+".png",300,200,"img",1004);
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_5p/defended_"+arr[i]+".png",300,200,"img",1005);
 
 
   }
@@ -191,10 +207,11 @@ if(text_model=="NN-CONNV5-PRUNED" && text_patch=="Patch 075p"){
     removeImages()
   }
   for (let i = 0, len = arr.length; i < len; i++) {
-    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/input_image_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/attacked_image_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/GroundTruth_"+arr[i]+".png",300,200,"img");
-    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/Predicted_"+arr[i]+".png",300,200,"img");
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/input_image_"+arr[i]+".png",300,200,"img",1001);
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/attacked_image_"+arr[i]+".png",300,200,"img",1002);
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/GroundTruth_"+arr[i]+".png",300,200,"img",1003);
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/Predicted_"+arr[i]+".png",300,200,"img",1004);
+    show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/defended_"+arr[i]+".png",300,200,"img",1005);
 
 
   }
