@@ -13,6 +13,7 @@
 <select name="model" id="model">
   <option value="model1">NN-CONNV5</option>
   <option value="model2">NN-CONNV5-PRUNED</option>
+  <option value="model2">RESNET</option>
 </select>
 
 <label style="padding-left: 20px;" for="patch"><t><t>Choose a Patch:<t></label>
@@ -212,6 +213,53 @@ if(text_model=="NN-CONNV5-PRUNED" && text_patch=="Patch 075p"){
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/GroundTruth_"+arr[i]+".png",300,200,"img",1003);
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/Predicted_"+arr[i]+".png",300,200,"img",1004);
     show_image("img","BDSImages/BDSImages/nnconv5_pruned_75p/defended_"+arr[i]+".png",300,200,"img",1005);
+
+
+  }
+
+}
+
+if(text_model=="RESNET" && text_patch=="Patch 2p"){
+  if(i>1) {
+    removeImages()
+  }
+  for (let i = 0, len = arr.length-1; i < len; i++) {
+    show_image("img","BDSImages/BDSImages/resnet_2p/input_image_"+arr[i]+".png",300,200,"img",1001);
+    show_image("img","BDSImages/BDSImages/resnet_2p/attacked_image_"+arr[i]+".png",300,200,"img",1002);
+    show_image("img","BDSImages/BDSImages/resnet_2p/GroundTruth_"+arr[i]+".png",300,200,"img",1003);
+    show_image("img","BDSImages/BDSImages/resnet_2p/Predicted_"+arr[i]+".png",300,200,"img",1004);
+    show_image("img","BDSImages/BDSImages/resnet_2p/defended_"+arr[i]+".png",300,200,"img",1005);
+
+
+  }
+}
+
+
+if(text_model=="RESNET" && text_patch=="Patch 5p"){
+  if(i>1) {
+    removeImages()
+  }
+  for (let i = 0, len = arr.length-1; i < len; i++) {
+    show_image("img","BDSImages/BDSImages/resnet_5p/input_image_"+arr[i]+".png",300,200,"img",1001);
+    show_image("img","BDSImages/BDSImages/resnet_5p/attacked_image_"+arr[i]+".png",300,200,"img",1002);
+    show_image("img","BDSImages/BDSImages/resnet_5p/GroundTruth_"+arr[i]+".png",300,200,"img",1003);
+    show_image("img","BDSImages/BDSImages/resnet_5p/Predicted_"+arr[i]+".png",300,200,"img",1004);
+    show_image("img","BDSImages/BDSImages/resnet_5p/defended_"+arr[i]+".png",300,200,"img",1005);
+
+
+  }
+}
+
+if(text_model=="RESNET" && text_patch=="Patch 075p"){
+  if(i>1) {
+    removeImages()
+  }
+  for (let i = 0, len = arr.length-1; i < len; i++) {
+    show_image("img","BDSImages/BDSImages/resnet_75p/input_image_"+arr[i]+".png",300,200,"img",1001);
+    show_image("img","BDSImages/BDSImages/resnet_75p/attacked_image_"+arr[i]+".png",300,200,"img",1002);
+    show_image("img","BDSImages/BDSImages/resnet_75p/GroundTruth_"+arr[i]+".png",300,200,"img",1003);
+    show_image("img","BDSImages/BDSImages/resnet_75p/Predicted_"+arr[i]+".png",300,200,"img",1004);
+    show_image("img","BDSImages/BDSImages/resnet_75p/defended_"+arr[i]+".png",300,200,"img",1005);
 
 
   }
