@@ -1,3 +1,3 @@
-# BigDataProjectGroup6
+# Machine Learning Project
 
-Class Project
+Project for ML Team 7
